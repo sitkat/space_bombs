@@ -1,5 +1,1 @@
-enum LevelsState{
-  easy,
-  normal,
-  hard
-}
+enum LevelsState { easy, normal, hard }

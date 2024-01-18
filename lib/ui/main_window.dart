@@ -118,7 +118,7 @@ class MainWindow extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             color: AppColors.accent,
-            borderRadius: BorderRadius.circular(32.0),
+            borderRadius: BorderRadius.circular(16.0),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
