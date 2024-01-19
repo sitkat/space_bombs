@@ -5,6 +5,7 @@ import 'package:space_bombs/ui/game_screen.dart';
 import 'package:space_bombs/ui/settings_screen.dart';
 
 import '../theme/app_colors.dart';
+import '../theme/app_icon_button.dart';
 import 'levels_screen.dart';
 
 class MainWindow extends StatelessWidget {
@@ -27,13 +28,19 @@ class MainWindow extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              _buildIconButton(Icons.volume_down_sharp, () {
-                // Handle volume down
-              }),
+              AppIconButton(
+                onPressed: () {
+                  //
+                },
+                icon: Icons.volume_down_sharp,
+              ),
               SizedBox(width: 5),
-              _buildIconButton(Icons.settings, () {
-                _navigateToScreen(context, const SettingsScreen());
-              }),
+              AppIconButton(
+                onPressed: () {
+                  _navigateToScreen(context, const SettingsScreen());
+                },
+                icon: Icons.settings,
+              ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 50, right: 100),
@@ -101,30 +108,6 @@ class MainWindow extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => screen),
-    );
-  }
-
-  Widget _buildIconButton(IconData icon, VoidCallback onTap) {
-    return Row(
-      children: [
-        InkWell(
-          onTap: onTap,
-          child: Container(
-            width: 49,
-            height: 49,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.accent,
-            ),
-            padding: const EdgeInsets.all(2),
-            child: Icon(
-              icon,
-              color: AppColors.white,
-              size: 30,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
