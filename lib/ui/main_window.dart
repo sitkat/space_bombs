@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:space_bombs/theme/app_button.dart';
 import 'package:space_bombs/ui/game_screen.dart';
+import 'package:space_bombs/ui/settings_screen.dart';
 
 import '../theme/app_colors.dart';
 import 'levels_screen.dart';
@@ -21,7 +23,7 @@ class MainWindow extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -30,11 +32,11 @@ class MainWindow extends StatelessWidget {
               }),
               SizedBox(width: 5),
               _buildIconButton(Icons.settings, () {
-                _navigateToScreen(context, const GameScreen());
+                _navigateToScreen(context, const SettingsScreen());
               }),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 50,right: 100),
+                  padding: const EdgeInsets.only(left: 50, right: 100),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -55,18 +57,35 @@ class MainWindow extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 25),
-                      _buildButton('Start game', () {
-                        _navigateToScreen(context, const GameScreen());
-                      }),
+                      AppButton(
+                        text: 'Start game',
+                        onPressed: () {
+                          _navigateToScreen(
+                            context,
+                            const GameScreen(),
+                          );
+                        },
+                        radius: 16.0,
+                      ),
                       SizedBox(height: 5),
-                      _buildButton('Levels of difficulty', () {
-                        _navigateToScreen(context, const LevelsScreen());
-                      }),
+                      AppButton(
+                        text: 'Levels of difficulty',
+                        onPressed: () {
+                          _navigateToScreen(
+                            context,
+                            const LevelsScreen(),
+                          );
+                        },
+                        radius: 16.0,
+                      ),
                       SizedBox(height: 5),
-                      _buildButton('Exit', () {
-                        SystemNavigator.pop();
-                      }),
-
+                      AppButton(
+                        text: 'Exit',
+                        onPressed: () {
+                          SystemNavigator.pop();
+                        },
+                        radius: 16.0,
+                      ),
                     ],
                   ),
                 ),
@@ -98,43 +117,14 @@ class MainWindow extends StatelessWidget {
               color: AppColors.accent,
             ),
             padding: const EdgeInsets.all(2),
-            child: Icon(icon, color: AppColors.white,size: 30,),
+            child: Icon(
+              icon,
+              color: AppColors.white,
+              size: 30,
+            ),
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildButton(String text, VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 100,right: 100),
-        child: Container(
-          height: 49,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 30.0,
-            vertical: 10.0,
-          ),
-          decoration: BoxDecoration(
-            color: AppColors.accent,
-            borderRadius: BorderRadius.circular(16.0),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                text,
-                style: const TextStyle(
-                  fontSize: 15,
-                  color: AppColors.white,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
