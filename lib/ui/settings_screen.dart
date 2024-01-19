@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:space_bombs/ui/game_screen.dart';
-import 'package:space_bombs/ui/settings_screen.dart';
+import 'package:space_bombs/theme/app_icon_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../theme/app_button.dart';
 import '../theme/app_colors.dart';
-import '../theme/app_icon_button.dart';
 
-class LevelsScreen extends StatelessWidget {
-  const LevelsScreen({super.key});
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +14,7 @@ class LevelsScreen extends StatelessWidget {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/levels.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
+        color: AppColors.surface,
         child: Padding(
           padding: const EdgeInsets.only(
               left: 15.0, right: 15.0, bottom: 20.0, top: 20),
@@ -41,23 +34,6 @@ class LevelsScreen extends StatelessWidget {
                     iconHeight: 40,
                     iconSize: 20,
                   ),
-                  Row(
-                    children: [
-                      AppIconButton(
-                        onPressed: () {
-                          //
-                        },
-                        icon: Icons.volume_down_sharp,
-                      ),
-                      SizedBox(width: 5),
-                      AppIconButton(
-                        onPressed: () {
-                          _navigateToScreen(context, const SettingsScreen());
-                        },
-                        icon: Icons.settings,
-                      ),
-                    ],
-                  )
                 ],
               ),
               Expanded(
@@ -69,7 +45,7 @@ class LevelsScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          'Levels of difficulty',
+                          'Settings',
                           style: TextStyle(
                             fontSize: 32,
                             color: AppColors.white,
@@ -79,35 +55,27 @@ class LevelsScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 25),
                       AppButton(
-                        text: 'Easy',
-                        onPressed: () {
-                          _navigateToScreen(
-                            context,
-                            const GameScreen(),
-                          );
+                        text: 'Share with friends',
+                        onPressed: () async {
+                          final Uri url = Uri.parse('https://google.com');
+                          await launchUrl(url);
                         },
                       ),
                       SizedBox(height: 5),
                       AppButton(
-                        text: 'Normal',
-                        onPressed: () {
-                          _navigateToScreen(
-                            context,
-                            const GameScreen(),
-                          );
+                        text: 'Privacy Policy',
+                        onPressed: () async {
+                          final Uri url = Uri.parse('https://google.com');
+                          await launchUrl(url);
                         },
-                        backgroundColor: AppColors.normal,
                       ),
                       SizedBox(height: 5),
                       AppButton(
-                        text: 'Hard',
-                        onPressed: () {
-                          _navigateToScreen(
-                            context,
-                            const GameScreen(),
-                          );
+                        text: 'Terms of use',
+                        onPressed: () async {
+                          final Uri url = Uri.parse('https://google.com');
+                          await launchUrl(url);
                         },
-                        backgroundColor: AppColors.hard,
                       ),
                     ],
                   ),
@@ -117,13 +85,6 @@ class LevelsScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  void _navigateToScreen(BuildContext context, Widget screen) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => screen),
     );
   }
 }

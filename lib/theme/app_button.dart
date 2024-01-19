@@ -48,37 +48,4 @@ class AppButton extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildButton(String text, VoidCallback onTap, Color color) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 100, right: 100),
-        child: Container(
-          height: 49,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 30.0,
-            vertical: 10.0,
-          ),
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(32.0),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                text,
-                style: const TextStyle(
-                  fontSize: 15,
-                  color: AppColors.white,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }
