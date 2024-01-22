@@ -87,7 +87,7 @@ class LevelsScreen extends StatelessWidget {
                           );
                         },
                       ),
-                      SizedBox(height: 5),
+                      SizedBox(height: 10),
                       AppButton(
                         text: 'Normal',
                         onPressed: () {
@@ -98,7 +98,7 @@ class LevelsScreen extends StatelessWidget {
                         },
                         backgroundColor: AppColors.normal,
                       ),
-                      SizedBox(height: 5),
+                      SizedBox(height: 10),
                       AppButton(
                         text: 'Hard',
                         onPressed: () {

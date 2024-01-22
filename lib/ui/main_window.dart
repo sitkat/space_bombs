@@ -75,7 +75,7 @@ class MainWindow extends StatelessWidget {
                         },
                         radius: 16.0,
                       ),
-                      SizedBox(height: 5),
+                      SizedBox(height: 10),
                       AppButton(
                         text: 'Levels of difficulty',
                         onPressed: () {
@@ -86,7 +86,7 @@ class MainWindow extends StatelessWidget {
                         },
                         radius: 16.0,
                       ),
-                      SizedBox(height: 5),
+                      SizedBox(height: 10),
                       AppButton(
                         text: 'Exit',
                         onPressed: () {

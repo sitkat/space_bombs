@@ -61,7 +61,7 @@ class SettingsScreen extends StatelessWidget {
                           await launchUrl(url);
                         },
                       ),
-                      SizedBox(height: 5),
+                      SizedBox(height: 10),
                       AppButton(
                         text: 'Privacy Policy',
                         onPressed: () async {
@@ -69,7 +69,7 @@ class SettingsScreen extends StatelessWidget {
                           await launchUrl(url);
                         },
                       ),
-                      SizedBox(height: 5),
+                      SizedBox(height: 10),
                       AppButton(
                         text: 'Terms of use',
                         onPressed: () async {

@@ -6,6 +6,7 @@ import 'package:space_bombs/data/level_state.dart';
 import 'package:space_bombs/theme/app_colors.dart';
 import 'package:space_bombs/theme/app_container.dart';
 import 'package:space_bombs/ui/main_window.dart';
+import 'package:space_bombs/ui/pause_screen.dart';
 
 import '../data/game_provider.dart';
 
@@ -482,7 +483,13 @@ class _GameScreenState extends State<GameScreen> {
 
   Widget _buildMenuButton() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        _timer?.cancel();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => PauseScreen()),
+        );
+      },
       child: AppContainer(
         child: Row(
           children: [
