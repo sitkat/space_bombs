@@ -4,6 +4,7 @@ import 'package:space_bombs/theme/app_button.dart';
 import 'package:space_bombs/ui/game_screen.dart';
 import 'package:space_bombs/ui/settings_screen.dart';
 
+import '../data/level_state.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_icon_button.dart';
 import 'levels_screen.dart';
@@ -69,7 +70,7 @@ class MainWindow extends StatelessWidget {
                         onPressed: () {
                           _navigateToScreen(
                             context,
-                            const GameScreen(),
+                            const GameScreen(state: LevelState.easy),
                           );
                         },
                         radius: 16.0,
