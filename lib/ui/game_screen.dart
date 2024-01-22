@@ -30,6 +30,23 @@ class _GameScreenState extends State<GameScreen> {
   Timer? _timer;
   late Duration remainingTime;
 
+  void _navigateToPauseScreen() async {
+    _timer?.cancel();
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PauseScreen(remainingTime: remainingTime),
+      ),
+    );
+
+    if (result == true) {
+      _startTimer();
+    }
+    if (result == false) {
+      _restartGame();
+    }
+  }
+
   void initState() {
     remainingTime = GameProvider.getGameState(widget.state).time;
     _startTimer();
@@ -139,6 +156,20 @@ class _GameScreenState extends State<GameScreen> {
       });
     });
   }
+
+  void _restartGame() {
+    setState(() {
+      foundBomb = 0;
+      remainingTime = GameProvider.getGameState(widget.state).time;
+      _timer?.cancel();
+      _startTimer();
+      isBomb = List.filled(27, false);
+      placeBombsRandomly();
+      cardOpened = List.filled(27, false);
+      shuffledIndexes = List.generate(27, (index) => index)..shuffle();
+    });
+  }
+
 
   void placeBombsRandomly() {
     var random = Random();
@@ -484,11 +515,7 @@ class _GameScreenState extends State<GameScreen> {
   Widget _buildMenuButton() {
     return InkWell(
       onTap: () {
-        _timer?.cancel();
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => PauseScreen()),
-        );
+        _navigateToPauseScreen();
       },
       child: AppContainer(
         child: Row(
