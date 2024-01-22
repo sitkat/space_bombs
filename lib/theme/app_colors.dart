@@ -6,7 +6,6 @@ class AppColors {
   static const Color hard = Color(0xffFF472E);
   static const Color white = Color(0xffFFFFFF);
   static const Color card = Color(0xff212020);
-  static const Color alertDialog = Color(0xff1C1C1C);
   static Color whiteWithOpacity = const Color(0xffFFFFFF).withOpacity(0.54);
 
   static const Color surface = Color(0xff161616);

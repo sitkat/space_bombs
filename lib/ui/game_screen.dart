@@ -166,9 +166,10 @@ class _GameScreenState extends State<GameScreen> {
   void showAlertDialog() {
     showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: AppColors.alertDialog,
+          backgroundColor: AppColors.card,
           title: Column(
             children: [
               Row(
@@ -302,17 +303,21 @@ class _GameScreenState extends State<GameScreen> {
       ),
       itemCount: 27,
       itemBuilder: (context, index) {
+        bool isBomb = this.isBomb[index];
+        bool isOpened = cardOpened[index];
+
         return GestureDetector(
           onTap: () => onCardTap(index),
           child: AppContainer(
             radius: 16.0,
+            color: isOpened ? (isBomb ? AppColors.accent : AppColors.card) : AppColors.card,
             child: Padding(
               padding: const EdgeInsets.all(4.0),
               child: Image.asset(
-                cardOpened[index]
-                    ? (isBomb[index]
-                        ? 'assets/images/imgBomb.png'
-                        : planets[shuffledIndexes[index] % 9])
+                isOpened
+                    ? (isBomb
+                    ? 'assets/images/imgBomb.png'
+                    : planets[shuffledIndexes[index] % 9])
                     : 'assets/images/unknownBomb.png',
               ),
             ),
