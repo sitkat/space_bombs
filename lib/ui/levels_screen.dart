@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:space_bombs/data/level_state.dart';
 import 'package:space_bombs/ui/game_screen.dart';
 import 'package:space_bombs/ui/settings_screen.dart';
 
@@ -83,7 +83,7 @@ class LevelsScreen extends StatelessWidget {
                         onPressed: () {
                           _navigateToScreen(
                             context,
-                            const GameScreen(),
+                            const GameScreen(state: LevelState.easy),
                           );
                         },
                       ),
@@ -93,7 +93,7 @@ class LevelsScreen extends StatelessWidget {
                         onPressed: () {
                           _navigateToScreen(
                             context,
-                            const GameScreen(),
+                            const GameScreen(state: LevelState.normal),
                           );
                         },
                         backgroundColor: AppColors.normal,
@@ -104,7 +104,7 @@ class LevelsScreen extends StatelessWidget {
                         onPressed: () {
                           _navigateToScreen(
                             context,
-                            const GameScreen(),
+                            const GameScreen(state: LevelState.hard),
                           );
                         },
                         backgroundColor: AppColors.hard,
