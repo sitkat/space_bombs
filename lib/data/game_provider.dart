@@ -18,28 +18,33 @@ class GameProvider{
 class AppGame {
   static final AppGame easyLevel = AppGame(
     backgroundColor: AppColors.accent,
+    text: 'Easy',
     numberOfBombs: 1,
     time: Duration(seconds: 60),
   );
 
   static final AppGame normalLevel = AppGame(
     backgroundColor: AppColors.normal,
+    text: 'Normal',
     numberOfBombs: 2,
     time: Duration(seconds: 40),
   );
 
   static final AppGame hardLevel = AppGame(
-    backgroundColor: const Color(0xffE7E7E8),
+    backgroundColor: AppColors.hard,
+    text: 'Hard',
     numberOfBombs: 3,
     time: Duration(seconds: 30),
   );
 
   final Color backgroundColor;
+  final String text;
   final int numberOfBombs;
   final Duration time;
 
   AppGame({
     required this.backgroundColor,
+    required this.text,
     required this.numberOfBombs,
     required this.time,
   });
